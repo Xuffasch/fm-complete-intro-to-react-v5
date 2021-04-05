@@ -1,0 +1,23 @@
+{
+    "name": "adopt-me",
+    "version": "1.0.0",
+    "description": "Frontendmasters Complete Intro to React v5",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "prettier 'src/**/*.{js,html}' --write"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Xuffasch/fm-complete-intro-to-react-v5.git"
+    },
+    "author": "programmerltwp",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Xuffasch/fm-complete-intro-to-react-v5/issues"
+    },
+    "homepage": "https://github.com/Xuffasch/fm-complete-intro-to-react-v5#readme",
+    "devDependencies": {
+        "prettier": "^2.2.1"
+    }
+}
