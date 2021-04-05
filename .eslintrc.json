@@ -10,7 +10,7 @@
     "no-console": 1
   },
   "plugins": [
-    "html"
+    "react","import","jsx-a11y","html"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
