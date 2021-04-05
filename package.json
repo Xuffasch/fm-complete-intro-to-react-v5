@@ -35,5 +35,8 @@
         "@frontendmasters/pet": "^1.0.3",
         "react": "^16.8.6",
         "react-dom": "^16.8.6"
-    }
+    },
+    "browserslist": [
+        "last 2 Chrome versions"
+    ]
 }
