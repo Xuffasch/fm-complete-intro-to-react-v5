@@ -17,7 +17,7 @@ const NavBar = () => {
     <header
       onClick={() => setPadding(padding + 15)}
       css={css`
-        background-color: ${Colors.secondary};
+        background-color: ${Colors.dark};
         padding: ${padding}px;
       `}
     >
@@ -26,10 +26,10 @@ const NavBar = () => {
         css={css`
           font-size: 60px;
           display: inline-block;
-          animation: 1s ${spin} linear infinite;
+          /* animation: 1s ${spin} linear infinite; */
           &:hover {
             text-decoration: underline;
-            animation: 1s ${spin} linear infinite reverse;
+            /* animation: 1s ${spin} linear infinite reverse; */
           }
         `}
         role="img" 
