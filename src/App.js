@@ -6,7 +6,12 @@ import SearchParams from './SearchParams'
 import ThemeContext from './ThemeContext';
 
 const App = () => {
-  const themeHook = useState('darkblue');
+  // Even if the hook was initialized with a string default value, an object can be used to pass multiple values
+  // Actually, a hook is not mandatory to use Context. A simple object would be enough. However hook provide a function to change the initial values of the Context.
+  const themeHook = useState({
+    submitColor: 'darkblue',
+    adoptColor: 'red'
+  });
   return (
     <React.StrictMode>
       <ThemeContext.Provider value={themeHook}>
