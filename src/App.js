@@ -1,14 +1,15 @@
-import React, { useState, lazy, Suspense } from 'react'
+// import React, { useState, lazy, Suspense } from 'react'
+import React, { useState } from 'react';
 // import { render } from 'react-dom'
 import { Router } from '@reach/router';
-// import Details from './Details';
-// import SearchParams from './SearchParams'
+import Details from './Details';
+import SearchParams from './SearchParams'
 import ThemeContext from './ThemeContext';
 import NavBar from './Navbar';
 
-const Details = lazy(() => import('./Details'));
+// const Details = lazy(() => import('./Details'));
 
-const SearchParams = lazy(() => import('./SearchParams'))
+// const SearchParams = lazy(() => import('./SearchParams'))
 
 const App = () => {
   // Even if the hook was initialized with a string default value, an object can be used to pass multiple values
@@ -22,12 +23,12 @@ const App = () => {
       <ThemeContext.Provider value={themeHook}>
         <div>
           <NavBar />
-          <Suspense fallback={<h1>Loading Page...</h1>}>
+          {/* <Suspense fallback={<h1>Loading Page...</h1>}> */}
             <Router>
               <SearchParams path="/" />
               <Details path="/details/:id" />
             </Router>
-          </Suspense>
+          {/* </Suspense> */}
         </div>
       </ThemeContext.Provider>
     </React.StrictMode>
