@@ -2,11 +2,13 @@ import React, { useState, lazy, Suspense } from 'react'
 import { render } from 'react-dom'
 import { Router } from '@reach/router';
 // import Details from './Details';
-import SearchParams from './SearchParams'
+// import SearchParams from './SearchParams'
 import ThemeContext from './ThemeContext';
 import NavBar from './Navbar';
 
 const Details = lazy(() => import('./Details'));
+
+const SearchParams = lazy(() => import('./SearchParams'))
 
 const App = () => {
   // Even if the hook was initialized with a string default value, an object can be used to pass multiple values

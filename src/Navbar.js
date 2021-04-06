@@ -15,7 +15,6 @@ const NavBar = () => {
   const [padding, setPadding] = useState(15);
   return (
     <header
-      onClick={() => setPadding(padding + 15)}
       css={css`
         background-color: ${Colors.dark};
         padding: ${padding}px;
