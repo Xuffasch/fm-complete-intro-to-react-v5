@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import { render } from 'react-dom'
 import { Router } from '@reach/router';
-import Details from './Details';
+// import Details from './Details';
 import SearchParams from './SearchParams'
 import ThemeContext from './ThemeContext';
 import NavBar from './Navbar';
+
+const Details = lazy(() => import('./Details'));
 
 const App = () => {
   // Even if the hook was initialized with a string default value, an object can be used to pass multiple values
@@ -18,10 +20,12 @@ const App = () => {
       <ThemeContext.Provider value={themeHook}>
         <div>
           <NavBar />
-          <Router>
-            <SearchParams path="/" />
-            <Details path="/details/:id" />
-          </Router>
+          <Suspense fallback={<h1>Loading Page...</h1>}>
+            <Router>
+              <SearchParams path="/" />
+              <Details path="/details/:id" />
+            </Router>
+          </Suspense>
         </div>
       </ThemeContext.Provider>
     </React.StrictMode>
