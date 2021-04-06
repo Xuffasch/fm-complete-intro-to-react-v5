@@ -4,6 +4,7 @@ import { Link, Router } from '@reach/router';
 import Details from './Details';
 import SearchParams from './SearchParams'
 import ThemeContext from './ThemeContext';
+import NavBar from './Navbar';
 
 const App = () => {
   // Even if the hook was initialized with a string default value, an object can be used to pass multiple values
@@ -16,9 +17,7 @@ const App = () => {
     <React.StrictMode>
       <ThemeContext.Provider value={themeHook}>
         <div>
-          <header>
-            <Link to="/">Adopt Me!</Link>
-          </header>
+          <NavBar />
           <Router>
             <SearchParams path="/" />
             <Details path="/details/:id" />
