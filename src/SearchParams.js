@@ -53,8 +53,8 @@ const SearchParams = () => {
           Theme 
           <select
             value={theme.submitColor}
-            onChange={e => setTheme({ submitColor: e.target.value })}
-            onBlur={e => setTheme({ submitColor: e.target.value })}
+            onChange={e => setTheme({ submitColor: e.target.value, adoptColor: e.target.value })}
+            onBlur={e => setTheme({ submitColor: e.target.value, adoptColor: e.target.value })}
           >
             <option value="peru">Peru</option>
             <option value="darkblue">Dark Blue</option>
