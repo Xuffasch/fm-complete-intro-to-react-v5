@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense } from 'react'
-import { render } from 'react-dom'
+// import { render } from 'react-dom'
 import { Router } from '@reach/router';
 // import Details from './Details';
 // import SearchParams from './SearchParams'
@@ -34,4 +34,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.getElementById('root'));
+export default App;
