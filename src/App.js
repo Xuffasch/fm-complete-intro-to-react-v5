@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { render } from 'react-dom'
-import { Link, Router } from '@reach/router';
+import { Router } from '@reach/router';
 import Details from './Details';
 import SearchParams from './SearchParams'
 import ThemeContext from './ThemeContext';
