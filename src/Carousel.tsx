@@ -1,9 +1,19 @@
 import React from 'react';
+import { Photo } from '@frontendmasters/pet';
 
-class Carousel extends React.Component {
-  state = { photos: [], active: 0 };
+interface IProps {
+  media: Photo[]
+}
 
-  static getDerivedStateFromProps({ media }) {
+interface IState {
+  active: number;
+  photos: string[];
+}
+
+class Carousel extends React.Component<IProps, IState> {
+  public state = { photos: [], active: 0 };
+
+  public static getDerivedStateFromProps({ media } : IProps) {
     let photos = ['http://placecorgi.com/600/600'];
 
     if (media.length) {
@@ -14,13 +24,20 @@ class Carousel extends React.Component {
   }
 
   // Use Arrow function so that this is correct when it is called, which should be the Carousel context
-  handleIndexClick = (event) => {
-    this.setState({
-      active: +event.target.dataset.index
-    })
+  public handleIndexClick = (event: React.MouseEvent<HTMLElement>) => {
+    // Narrow the type of the event target to be sure it is an HTML element and have dataset attribute available
+    if (!(event.target instanceof HTMLElement)) {
+      return;
+    }
+    
+    if (event.target.dataset.index) {
+      this.setState({
+        active: +event.target.dataset.index
+      })
+    }
   } 
 
-  render() {
+  public render() {
     const { photos, active } = this.state
 
     return (

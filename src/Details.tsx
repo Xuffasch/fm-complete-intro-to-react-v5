@@ -1,20 +1,26 @@
 // import React, { lazy } from 'react';
 import React from 'react';
-import pet from '@frontendmasters/pet';
+import pet, { Photo } from '@frontendmasters/pet';
 import Carousel from './Carousel';
 import ErrorBoundary from './ErrorBoundary';
 import ThemeContext from './ThemeContext';
-import { navigate } from '@reach/router';
+import { navigate, RouteComponentProps } from '@reach/router';
 import Modal from './Modal';
 
-// const Modal = lazy(() => import('./Modal'));
-class Details extends React.Component {
-  state = { loading: true, showModal: false };
+// We need to declare the type of props this element is going to get
+class Details extends React.Component<RouteComponentProps<{id: string}>> {
+  // Provided default values to let Typescript infer their types
+  public state = { loading: true, showModal: false, name: '', animal: '', location:"", description: "", media: [] as Photo[], url: "", breed: "" };
 
-  componentDidMount() {
-    // Comment this error after Error Boundary component testing
-    // throw new Error('lol');
-    pet.animal(this.props.id)
+  public componentDidMount() {
+    // Norrowing the type of 'id' so that in case it is not provided, this case is still taken care of
+    if (!this.props.id) {
+      navigate("/");
+      return;
+    }
+
+    // Adding the '+' sign transform id to a number
+    pet.animal(+this.props.id)
       .then(({ animal }) => {
         this.setState({
           url: animal.url,
@@ -29,13 +35,13 @@ class Details extends React.Component {
     }, console.error)
   }
   
-  toggleModal = () => {
+  public toggleModal = () => {
     this.setState({ showModal: !this.state.showModal })
   }
 
-  adopt = () => navigate(this.state.url);
+  public adopt = () => navigate(this.state.url);
 
-  render() {
+  public render() {
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
@@ -50,7 +56,7 @@ class Details extends React.Component {
           <h2>{`${animal} - ${breed} - ${location}`}</h2>
           <ThemeContext.Consumer>
             {([theme]) => (
-              <button onClick={this.toggleModal} style={{ backgroundColor: theme.adoptColor }}>Adopt {name}</button>
+              <button onClick={this.toggleModal} style={{ backgroundColor: theme }}>Adopt {name}</button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
@@ -71,7 +77,7 @@ class Details extends React.Component {
   }
 }
 
-export default function DetailsWithErrorBoundary(props) {
+export default function DetailsWithErrorBoundary(props : RouteComponentProps<{id: string}>) {
   return (
     <ErrorBoundary>
       {/* The same as writing */}
